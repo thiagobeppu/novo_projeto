@@ -1,7 +1,40 @@
- require 'capybara/cucumber'
- require "selenium-webdriver"
- #require 'gherkin'
+require 'capybara/cucumber'
+require 'capybara/rspec'
+require 'capybara/poltergeist'
+require 'rspec/expectations'
+require 'settingslogic'
 
- Capybara.default_driver = :selenium
- Capybara.default_max_wait_time= 20
+Dir[File.dirname(__FILE__) + '/../../lib/*.rb'].each { |f| require f }
 
+include RSpec::Expectations
+include PageHelpers
+include Capybara::DSL
+
+ENV['ENV'] ||= 'test'
+
+if ENV['IN_BROWSER']
+  Capybara.default_driver = :selenium
+  Capybara.default_max_wait_time = 10
+  Capybara.register_driver :selenium do |app|
+    Capybara::Selenium::Driver.new(
+      app, browser: :firefox, marionette: true
+      )
+
+  end
+  Capybara.page.driver.browser.manage.window.maximize
+else
+  Capybara.register_driver :poltergeist do |app|
+    Capybara::Poltergeist::Driver.new(
+      app,
+      inspector: true,
+      js_errors: false,
+      window_size: [1280, 1024],
+      phantomjs_options: ['--ignore-ssl-errors=yes','--ssl-protocol=tlsv1'],
+      debug: false
+    )
+  end
+  Capybara.default_driver    = :poltergeist
+  Capybara.javascript_driver = :poltergeist
+  Capybara.ignore_hidden_elements = false
+  Capybara.default_selector = :css
+end

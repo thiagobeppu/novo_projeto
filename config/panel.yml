@@ -1,0 +1,4 @@
+test: &default
+  site: https://www.youse.com.br
+  login: <%= ENV['EMAIL'] %>
+  password: <%= ENV['PASSWORD'] %>
