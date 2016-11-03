@@ -6,6 +6,11 @@ require 'settingslogic'
 
 Dir[File.dirname(__FILE__) + '/../../lib/*.rb'].each { |f| require f }
 
+After do
+  youcadastro.fechar
+end
+
+
 include RSpec::Expectations
 include PageHelpers
 include Capybara::DSL
@@ -28,7 +33,7 @@ else
       app,
       inspector: true,
       js_errors: false,
-      window_size: [1280, 1024],
+      window_size: [1920, 2080],
       phantomjs_options: ['--ignore-ssl-errors=yes','--ssl-protocol=tlsv1'],
       debug: false
     )
