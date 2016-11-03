@@ -25,7 +25,6 @@ end
 
 E(/^preencher dados do carro$/) do
   youcauto.preencher_dados_carro
-  youcauto.prencher_sinistro
 end
 
 

@@ -38,8 +38,9 @@ module Panel
       page.find(:id, 'auto_order_flow_pricing_requirements_driver_attributes_gender').click
       select 'Masculino'
       fill_in('auto_order_flow_pricing_requirements_driver_attributes_date_of_birth', :with => '18/11/1986')
-      page.find(:id, 'auto_order_flow_pricing_requirements_driver_attributes_years_since_last_claim').click
-      select 'não tive', match: :first
+      find('#auto_order_flow_pricing_requirements_driver_attributes_years_since_last_claim').trigger('click')
+       #page.save_screenshot('image_name.png')
+      select 'não tive'
     end
   end
 end

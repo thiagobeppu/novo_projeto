@@ -33,7 +33,7 @@ else
       app,
       inspector: true,
       js_errors: false,
-      window_size: [1920, 2080],
+      window_size: [1920, 6080],
       phantomjs_options: ['--ignore-ssl-errors=yes','--ssl-protocol=tlsv1'],
       debug: false
     )
