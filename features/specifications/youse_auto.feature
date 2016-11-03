@@ -9,4 +9,6 @@ Funcionalidade: Efetuar uma cotação de um seguro auto
       * preencher email de contato
       * ir para informações do veiculo
       * preencher dados do carro
+      * configurar seguro
+      * preencher dados pessoais
     Então chegar na página de pagamento

@@ -3,6 +3,7 @@
 
 Dado(/^que eu acesse a página Youse auto$/) do
   visit "https://www.youse.com.br/auto/order/new"
+  #aqui ficou comentado devido a cada hora vir a frase sem ou com "!"
   #expect(youcauto.cotacao_acesso).to eql("Oi, a gente quer conhecer você melhor, é rapidinho")
 end
 
@@ -25,15 +26,22 @@ end
 
 E(/^preencher dados do carro$/) do
   youcauto.preencher_dados_carro
+  expect(youcauto.alterar_seguro).to eql('Essa é a parte mais legal: bora deixar o seguro com a sua cara?')
 end
 
+E(/^configurar seguro$/) do
+    youcauto.configurar_seguro
+    expect(youcauto.sugestoes_seguro).to eql('Sugestões de Assistências Youse para vc. Conheça as assistências e serviços disponíveis pra você e deixe o seguro do seu jeito.')
+    youcauto.configurar_adicionais
+    expect(youcauto.quase_la).to eql('Conta aí um pouquinho mais sobre vc.')
+end
 
+E(/^preencher dados pessoais$/) do
+     youcauto.informar_dados
+     youcauto.informar_placa
+end
 
+Então(/^chegar na página de pagamento$/) do
+  expect(youcauto.informar_placa).to eql('Para finalizar, insira os dados de pagamento.')
 
-
-
-
-
-
-
-
+end

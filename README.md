@@ -2,7 +2,6 @@
 
 Foi usado
 -------------------
-
 Ruby 2.2.4
 PhantomJS
 
@@ -21,4 +20,3 @@ Ao acessar a parte de seguros autos em alguns casos apresenta erro pois apresent
       got: "Oi, a gente quer conhecer você melhor, é rapidinho"
 
 Na lista de montadores de carro a Citroen no firefox 48 o nome está quebrado
-
